@@ -1,0 +1,20 @@
+{
+  "name": "hdom",
+  "version": "1.0.0",
+  "description": "Holler London's in-house DOM Library",
+  "main": "lib/hdom.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/f5io/hdom.git"
+  },
+  "keywords": [
+    "dom",
+    "pubsub"
+  ],
+  "author": "Joe Harlow",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/f5io/hdom/issues"
+  },
+  "homepage": "https://github.com/f5io/hdom"
+}

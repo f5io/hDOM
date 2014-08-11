@@ -1,0 +1,13 @@
+{
+  "name": "hdom",
+  "version": "1.0.0",
+  "main": [
+    "lib/hdom.js"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "components"
+  ],
+  "dependencies": {}
+}

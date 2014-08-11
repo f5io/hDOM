@@ -1,4 +1,12 @@
-(function(w, d) {
+(function(factory) {
+
+    if (typeof module !== 'undefined' && module.exports) {
+        module.exports = factory(window, document);
+    } else {
+        window.hDOM = window.ƒ = factory(window, document);
+    }
+
+})(function(w, d) {
     
     'use strict';
 
@@ -156,6 +164,9 @@
                     };
                 }
             })(),
+            range: function(min, max) {
+                return Math.floor(Math.random() * (max - min + 1)) + min;
+            },
             windowHeight: (function() {
                 if (typeof w.innerHeight !== 'undefined') {
                     return function() {
@@ -406,7 +417,7 @@
 
     Object.defineProperty(ElementCollection.prototype, 'attr', _utils.extend(_defaults, {
         value: function(name, val) {
-            if (val) {
+            if (typeof val !== 'undefined') {
                 this.each(function() {
                     this.setAttribute(name, val);
                 });
@@ -444,7 +455,7 @@
             var frag = d.createDocumentFragment();
             _utils.each(args, function(value, i) {
                 if (isNaN(value) && 'nodeType' in value && value.nodeType === 1) {
-                    frag.appendChild(value.cloneNode(true));
+                    frag.appendChild(value);
                 }
             });
             this.each(function() {
@@ -460,7 +471,7 @@
             var frag = d.createDocumentFragment();
             _utils.each(args, function(value, i) {
                 if (isNaN(value) && 'nodeType' in value && value.nodeType === 1) {
-                    frag.appendChild(value.cloneNode(true));
+                    frag.appendChild(value);
                 }
             });
             this.each(function() {
@@ -482,7 +493,7 @@
     Object.defineProperty(ElementCollection.prototype, 'html', _utils.extend(_defaults, {
         value: function(h) {
             var val;
-            if (h) {
+            if (h || h === '') {
                 this.each(function() {
                     this.innerHTML = h;
                 });
@@ -640,11 +651,11 @@
     hDOM.each = _utils.each;
     hDOM.extend = _utils.extend;
     hDOM.format = _utils.format;
+    hDOM.range = _utils.range;
     hDOM.ajax = _utils.ajax;
     hDOM.emitter = _utils.emitter;
     hDOM.scrollTop = _utils.scrollTop;
 
-    w.$ = w.$ || hDOM;
-    w.hDOM = hDOM;
+    return hDOM;
 
-})(window, document);
+});

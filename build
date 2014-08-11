@@ -1,0 +1,7 @@
+#!/bin/sh
+
+cp -rf lib/hdom.js dist/hdom.js
+uglifyjs dist/hdom.js -o dist/hdom.min.js
+gzip -c dist/hdom.min.js | wc -c
+
+echo '[hDOM] Build complete.'
