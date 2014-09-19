@@ -64,6 +64,16 @@ The returned `ElementCollection` has the following methods, which are chainable:
         hDOM('div').each(function(el, index) {
         	console.log(el, index);
         });
+
+- ####`get`(`index /* int */`)
+	Returns element at index within the `ElementCollection` wrapped as it's own `ElementCollection`. Supplying an index of `-1` will return the last element.
+
+    _Example_:
+    
+        var ƒDiv = hDOM('div');
+        ƒDiv.get(0).addClass('first');
+        ƒDiv.get(-1).addClass('last');
+
     
 - ####`find`(`selector /* String */`)
     Search for a `selector` within the current `ElementCollection`. This method returns a new `ElementCollection` with any elements which match the `selector`.
